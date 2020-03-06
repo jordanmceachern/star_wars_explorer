@@ -8,8 +8,10 @@ const ColorButton = withStyles(theme => ({
       color: theme.palette.getContrastText(indigo[500]),
       backgroundColor: indigo[500],
       '&:hover': {
-        backgroundColor: indigo[700],
+        backgroundColor: indigo[700]
       },
+      width: '125px',
+      margin: '1rem 0 0 1rem'
     },
   }))(Button)
 
