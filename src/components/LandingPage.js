@@ -6,13 +6,13 @@ import People from './People'
 import Movies from './Movies'
 import Planets from './Planets'
 
-export default function LandingPage() {
+export default function LandingPage () {
   return (
     <>
       <CssBaseline />
-      <Container maxWidth="sm">
+      <Container maxWidth='sm'>
         <Typography
-          component="div"
+          component='div'
           style={
             {
               backgroundColor: '#eeeeee',
@@ -22,7 +22,8 @@ export default function LandingPage() {
               justifyContent: 'flex-start',
               alignItems: 'start'
             }
-          }>
+          }
+        >
           <People />
           <Movies />
           <Planets />
