@@ -1,8 +1,6 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
-import PeopleButtonNav from './PeopleButtonNav'
-import MoviesButtonNav from './MoviesButtonNav'
-import PlanetsButtonNav from './PlanetsButtonNav'
+import CustomButton from './CustomButton'
 
 export default function LandingPage () {
   return (
@@ -18,9 +16,11 @@ export default function LandingPage () {
         paddingTop: '64px'
       }}
     >
-      <PeopleButtonNav />
-      <MoviesButtonNav />
-      <PlanetsButtonNav />
+      {
+        ['People', 'Planets', 'Movies'].map(page => {
+          return <CustomButton page={page} key={page} />
+        })
+      }
     </Typography>
   )
 }

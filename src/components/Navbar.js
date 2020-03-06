@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import Drawer from '@material-ui/core/Drawer'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import List from '@material-ui/core/List'
@@ -12,8 +11,23 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
+import Drawer from '@material-ui/core/Drawer'
+import { useTheme } from '@material-ui/core/styles'
+import { Link } from 'react-router-dom'
+import StyleObject from './StyleObject'
 
 const Navbar = () => {
+  const classes = StyleObject()
+  const theme = useTheme()
+  const [open, setOpen] = React.useState(false)
+
+  const handleDrawerOpen = () => {
+    setOpen(true)
+  }
+
+  const handleDrawerClose = () => {
+    setOpen(false)
+  }
   return (
     <>
       <AppBar
@@ -33,7 +47,7 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap>
-            To do: Update Me Dynamically
+              To do: Update Me Dynamically w/ Redux
           </Typography>
         </Toolbar>
       </AppBar>
@@ -52,11 +66,18 @@ const Navbar = () => {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          {['Landing', 'People', 'Movies', 'Planets'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemText primary={text} />
-            </ListItem>
+        <List style={{ paddingLeft: '20px' }}>
+          {['landing', 'people', 'movies', 'planets'].map((text) => (
+            <Link
+              to={`/${text}`}
+              key={text}
+              onClick={handleDrawerClose}
+              style={{ textDecoration: 'none', color: 'black' }}
+            >
+              <ListItem button>
+                <ListItemText primary={text.toUpperCase()} />
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>

@@ -19,8 +19,8 @@ const ColorButton = withStyles(theme => ({
 const CustomButton = props => {
   return (
     <ColorButton variant='contained' color='primary'>
-      <Link to={`/${props.children.toLowerCase()}`} style={{ textDecoration: 'none', color: 'white' }}>
-        {props.children}
+      <Link to={`/${props.page.toLowerCase()}`} style={{ textDecoration: 'none', color: 'white' }}>
+        {props.page}
       </Link>
     </ColorButton>
   )
