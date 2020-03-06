@@ -1,12 +1,12 @@
 import React from 'react'
 import CustomButton from './CustomButton'
 
-const Planets = () => {
+const MoviesButtonNav = () => {
   return (
     <CustomButton>
-      Planets
+      Movies
     </CustomButton>
   )
 }
 
-export default Planets
+export default MoviesButtonNav

@@ -2,6 +2,7 @@ import React from 'react'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import { indigo } from '@material-ui/core/colors'
+import { Link } from 'react-router-dom'
 
 const ColorButton = withStyles(theme => ({
   root: {
@@ -18,7 +19,9 @@ const ColorButton = withStyles(theme => ({
 const CustomButton = props => {
   return (
     <ColorButton variant='contained' color='primary'>
-      {props.children}
+      <Link to={`/${props.children.toLowerCase()}`} style={{ textDecoration: 'none', color: 'white' }}>
+        {props.children}
+      </Link>
     </ColorButton>
   )
 }
