@@ -1,8 +1,11 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import CustomButton from './CustomButton'
+import * as actions from '../actions'
+import { connect } from 'react-redux'
 
-export default function LandingPage () {
+const LandingPage = props => {
+  props.fetchPeople()
   return (
     <Typography
       component='div'
@@ -24,3 +27,8 @@ export default function LandingPage () {
     </Typography>
   )
 }
+
+const mapStateToProps = ({ people, planets, movies }) => {
+  return { people, planets, movies }
+}
+export default connect(mapStateToProps, actions)(LandingPage)

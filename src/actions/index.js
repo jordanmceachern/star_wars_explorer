@@ -18,7 +18,7 @@ export const fetchPeople = () => async dispatch => {
       redirect: 'error',
       referrerPolicy: 'no-referrer'
     }).then(handleErrors).then(response => {
-      return response
+      return response.json()
     })
     console.log('res: ', res)
     // dispatch({ type: 'fetch_people', payload: res })
