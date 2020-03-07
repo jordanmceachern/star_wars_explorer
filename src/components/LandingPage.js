@@ -17,7 +17,7 @@ const LandingPage = () => {
       }}
     >
       {
-        ['People', 'Planets', 'Movies'].map(page => {
+        ['People', 'Movies', 'Planets'].map(page => {
           return <CustomButton page={page} key={page} />
         })
       }

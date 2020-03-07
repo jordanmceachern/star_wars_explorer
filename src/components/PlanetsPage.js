@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import MapStateToProps from './MapStateToProps'
 
 const PlanetsPage = props => {
-  let planets
   useEffect(() => {
-    planets = props.fetchPlanets()
-    console.log('planets: ', planets)
-  }, [planets])
+    if (props.planets === null) {
+      props.fetchPlanets()
+    }
+  }, [])
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '84px' }}>

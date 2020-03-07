@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import MapStateToProps from './MapStateToProps'
 
 const MoviesPage = props => {
-  let movies
   useEffect(() => {
-    movies = props.fetchMovies()
-    console.log('movies: ', movies)
-  }, [movies])
+    if (props.movies === null) {
+      props.fetchMovies()
+    }
+  }, [])
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '84px' }}>

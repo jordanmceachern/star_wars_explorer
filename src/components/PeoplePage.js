@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import MapStateToProps from './MapStateToProps'
 
 const PeoplePage = props => {
-  let people
   useEffect(() => {
-    people = props.fetchPeople()
-    console.log('people: ', people)
-  }, [people])
+    if (props.people === null) {
+      props.fetchPeople()
+    }
+  }, [])
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '84px' }}>
