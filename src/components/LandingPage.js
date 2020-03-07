@@ -2,7 +2,7 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import CustomButton from './CustomButton'
 
-export default function LandingPage () {
+const LandingPage = () => {
   return (
     <Typography
       component='div'
@@ -17,10 +17,12 @@ export default function LandingPage () {
       }}
     >
       {
-        ['People', 'Planets', 'Movies'].map(page => {
+        ['People', 'Movies', 'Planets'].map(page => {
           return <CustomButton page={page} key={page} />
         })
       }
     </Typography>
   )
 }
+
+export default LandingPage
