@@ -1,23 +1,66 @@
+const handleErrors = response => {
+  if (!response.ok) {
+    throw Error(response.statusText)
+  }
+  return response
+}
+
 export const fetchPeople = () => async dispatch => {
   try {
     const res = await fetch('https://swapi.co/api/people/', {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'default', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'omit', // include, *same-origin, omit
+      method: 'GET',
+      mode: 'cors',
+      cache: 'default',
+      credentials: 'omit',
       headers: {
         'Content-Type': 'application/json'
       },
-      redirect: 'error', // manual, *follow, error
-      referrerPolicy: 'no-referrer' // no-referrer, *client
+      redirect: 'error',
+      referrerPolicy: 'no-referrer'
+    }).then(handleErrors).then(response => {
+      return response
     })
-    const data = await res.json().then((data, err) => { /// ////////////////////////// TODO: Add res.ok check! ///////////////////////////////////////
-      if (data) {
-        return data
-      } else {
-        throw err
-      }
+    console.log('res: ', res)
+    // dispatch({ type: 'fetch_people', payload: res })
+  } catch (err) { return console.error(err) }
+}
+
+export const fetchPlanets = () => async dispatch => {
+  try {
+    const res = await fetch('https://swapi.co/api/planets/', {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'default',
+      credentials: 'omit',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'error',
+      referrerPolicy: 'no-referrer'
+    }).then(handleErrors).then(response => {
+      return response
     })
-    dispatch({ type: 'fetch_people', payload: data })
+    console.log('res: ', res)
+    // dispatch({ type: 'fetch_planets', payload: res })
+  } catch (err) { return console.error(err) }
+}
+
+export const fetchMovies = () => async dispatch => {
+  try {
+    const res = await fetch('https://swapi.co/api/films/', {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'default',
+      credentials: 'omit',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      redirect: 'error',
+      referrerPolicy: 'no-referrer'
+    }).then(handleErrors).then(response => {
+      return response
+    })
+    console.log('res: ', res)
+    // dispatch({ type: 'fetch_movies', payload: res })
   } catch (err) { return console.error(err) }
 }
