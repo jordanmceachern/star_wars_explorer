@@ -1,9 +1,11 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import CustomButton from './CustomButton'
+// import LoadingSpinner from './LoadingSpinner'
 
 export default function LandingPage () {
   return (
+    // <LoadingSpinner />
     <Typography
       component='div'
       style={{

@@ -13,12 +13,13 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import Drawer from '@material-ui/core/Drawer'
 import { useTheme } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import StyleObject from './StyleObject'
 
 const Navbar = () => {
   const classes = StyleObject()
   const theme = useTheme()
+  const segment = useLocation().pathname
   const [open, setOpen] = React.useState(false)
 
   const handleDrawerOpen = () => {
@@ -28,6 +29,17 @@ const Navbar = () => {
   const handleDrawerClose = () => {
     setOpen(false)
   }
+
+  const pageTitle = () => {
+    if ((segment === '/') || (segment === '/landing')) {
+      return 'Star Wars Explorer'
+    } else {
+      let title = segment.substring(1, segment.length)
+      title = title.charAt(0).toUpperCase() + title.substring(1)
+      return title
+    }
+  }
+
   return (
     <>
       <AppBar
@@ -47,7 +59,7 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap>
-              To do: Update Me Dynamically w/ Redux
+            {pageTitle()}
           </Typography>
         </Toolbar>
       </AppBar>

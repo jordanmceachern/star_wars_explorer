@@ -22,6 +22,7 @@ const Navigation = () => {
                 [TODO: display planets content]
           </div>
         </Route>
+        <Route path='/landing' component={LandingPage} />
         <Route path='/' component={LandingPage} />
       </Switch>
     </Container>
