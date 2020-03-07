@@ -1,29 +1,41 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Container from '@material-ui/core/Container'
-import LandingPage from './LandingPage'
 import { Switch, Route } from 'react-router-dom'
+import LoadingSpinner from './LoadingSpinner'
+const LandingPage = React.lazy(() => import('./LandingPage'))
+const PeoplePage = React.lazy(() => import('./PeoplePage'))
+const PlanetsPage = React.lazy(() => import('./PlanetsPage'))
+const MoviesPage = React.lazy(() => import('./MoviesPage'))
 
 const Navigation = () => {
   return (
     <Container style={{ maxWidth: '100vw', padding: '0' }}>
       <Switch>
         <Route path='/people'>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '84px' }}>
-                [TODO: display people content]
-          </div>
+          <Suspense fallback={LoadingSpinner()}>
+            <PeoplePage />
+          </Suspense>
         </Route>
         <Route path='/movies'>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '84px' }}>
-                [TODO: display movies content]
-          </div>
+          <Suspense fallback={LoadingSpinner()}>
+            <MoviesPage />
+          </Suspense>
         </Route>
         <Route path='/planets'>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingTop: '84px' }}>
-                [TODO: display planets content]
-          </div>
+          <Suspense fallback={LoadingSpinner()}>
+            <PlanetsPage />
+          </Suspense>
         </Route>
-        <Route path='/landing' component={LandingPage} />
-        <Route path='/' component={LandingPage} />
+        <Route path='/landing'>
+          <Suspense fallback={LoadingSpinner()}>
+            <LandingPage />
+          </Suspense>
+        </Route>
+        <Route path='/'>
+          <Suspense fallback={LoadingSpinner()}>
+            <LandingPage />
+          </Suspense>
+        </Route>
       </Switch>
     </Container>
   )
