@@ -35,30 +35,33 @@ const useStyles = makeStyles(theme => ({
 const InfoModal = props => {
   const classes = useStyles()
   const renderList = props.modalData.map((data, index) => {
+    let inner = (
+      <>
+        <ListItemText primary={data.title} />
+        <ListItemText>
+          <div style={{ fontSize: '12px', fontWeight: '700', textAlign: 'right' }}>
+            {data.value}
+          </div>
+        </ListItemText>
+      </>
+    )
     if (index === 0) {
-      return (
-        <div key={data.title}>
-          <ListItem button>
-            <ListItemText>
-              <div style={{ fontSize: '20px', fontWeight: '700', textAlign: 'center' }}>
-                {data.value}
-              </div>
-            </ListItemText>
-          </ListItem>
-          <Divider light />
-        </div>
-      )
-    } else {
-      return (
-        <div key={data.title}>
-          <ListItem button>
-            <ListItemText primary={data.title} />
-            <ListItemText secondary={data.value} />
-          </ListItem>
-          <Divider light />
-        </div>
+      inner = (
+        <ListItemText>
+          <div style={{ fontSize: '20px', fontWeight: '700', textAlign: 'center' }}>
+            {data.value}
+          </div>
+        </ListItemText>
       )
     }
+    return (
+      <div key={data.title}>
+        <ListItem button>
+          {inner}
+        </ListItem>
+        <Divider light />
+      </div>
+    )
   })
 
   return (
