@@ -8,6 +8,7 @@ const handleErrors = response => {
 }
 
 // the following is in place to return a manageable batch size for each route
+// 'load more' functionality is outside the scope, so only a single batch is fetched
 // this is why graphql takes the trophy...
 const indices = ['1', '2', '3', '4', '5', '6', '7']
 
