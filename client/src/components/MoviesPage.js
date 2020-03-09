@@ -26,7 +26,7 @@ const MoviesPage = props => {
         },
         {
           title: 'Producers',
-          value: movie.producers
+          value: movie.producer
         },
         {
           title: 'Release Date',
