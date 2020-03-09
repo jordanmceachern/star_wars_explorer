@@ -1,2 +1,2 @@
 ## Available Scripts
-To run this application locally, open a terminal in the parent directory 'star_wars_explorer' and enter the command 'npm run dev'
+To run this application locally, you will first have to install node modules inside the parent and client directories. Once this is complete, open a terminal in the parent directory and enter the command 'npm run dev'
